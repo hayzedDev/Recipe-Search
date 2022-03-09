@@ -1,29 +1,39 @@
-import View from './View.js';
-
-// import icons from '../img/icons.svg'; // Parcel 1
-import icons from 'url:../../img/icons.svg'; // Parcel 2
+import View from './View';
+import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
 
+console.log(Fraction);
+console.log(1);
 class RecipeView extends View {
   _parentElement = document.querySelector('.recipe');
-  _errorMessage = 'We could not find that recipe. Please try another one!';
-  _message = '';
+  _errorMessage = `Sorry we could not find the specified recipe with the id`;
+  _message = ``;
+  // constructor {
 
+  // }
   addHandlerRender(handler) {
-    ['hashchange', 'load'].forEach(ev => window.addEventListener(ev, handler));
+    ['hashchange', 'load'].forEach(ev => {
+      window.addEventListener(ev, handler);
+    });
   }
-
   addHandlerUpdateServings(handler) {
     this._parentElement.addEventListener('click', function (e) {
-      const btn = e.target.closest('.btn--update-servings');
+      e.preventDefault();
+      const btn = e.target.closest('.btn--increase-servings');
       if (!btn) return;
-      const { updateTo } = btn.dataset;
-      if (+updateTo > 0) handler(+updateTo);
+      console.log(btn, 1111);
+      const updateTo = +btn.dataset.updateTo;
+
+      if (updateTo > 0) {
+        handler(updateTo);
+        console.log(this._data);
+      }
     });
   }
 
   addHandlerAddBookmark(handler) {
     this._parentElement.addEventListener('click', function (e) {
+      e.preventDefault();
       const btn = e.target.closest('.btn--bookmark');
       if (!btn) return;
       handler();
@@ -32,10 +42,10 @@ class RecipeView extends View {
 
   _generateMarkup() {
     return `
-      <figure class="recipe__fig">
+        <figure class="recipe__fig">
         <img src="${this._data.image}" alt="${
       this._data.title
-    }" class="recipe__img" />
+    }: class="recipe__img" />
         <h1 class="recipe__title">
           <span>${this._data.title}</span>
         </h1>
@@ -61,14 +71,14 @@ class RecipeView extends View {
           <span class="recipe__info-text">servings</span>
 
           <div class="recipe__info-buttons">
-            <button class="btn--tiny btn--update-servings" data-update-to="${
+            <button class="btn--tiny btn--increase-servings" data-update-to="${
               this._data.servings - 1
             }">
               <svg>
                 <use href="${icons}#icon-minus-circle"></use>
               </svg>
             </button>
-            <button class="btn--tiny btn--update-servings" data-update-to="${
+            <button class="btn--tiny btn--increase-servings" data-update-to="${
               this._data.servings + 1
             }">
               <svg>
@@ -78,7 +88,7 @@ class RecipeView extends View {
           </div>
         </div>
 
-        <div class="recipe__user-generated ${this._data.key ? '' : 'hidden'}">
+        <div class="recipe__user-generated ${!this._data.key ? 'hidden' : ''}">
           <svg>
             <use href="${icons}#icon-user"></use>
           </svg>
@@ -95,7 +105,8 @@ class RecipeView extends View {
       <div class="recipe__ingredients">
         <h2 class="heading--2">Recipe ingredients</h2>
         <ul class="recipe__ingredient-list">
-          ${this._data.ingredients.map(this._generateMarkupIngredient).join('')}
+
+        ${this._data.ingredients.map(this._generateMarkupIngredients).join('')}
       </div>
 
       <div class="recipe__directions">
@@ -121,7 +132,8 @@ class RecipeView extends View {
     `;
   }
 
-  _generateMarkupIngredient(ing) {
+  _generateMarkupIngredients(ing) {
+    console.log(new Fraction(ing.quantity).toString());
     return `
     <li class="recipe__ingredient">
       <svg class="recipe__icon">
@@ -135,8 +147,9 @@ class RecipeView extends View {
         ${ing.description}
       </div>
     </li>
-  `;
+    `;
   }
 }
-
 export default new RecipeView();
+// console.log(8);
+// console.log(44);

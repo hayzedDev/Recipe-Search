@@ -1,14 +1,11 @@
-class SearchView {
+class searchView {
   _parentEl = document.querySelector('.search');
 
   getQuery() {
     const query = this._parentEl.querySelector('.search__field').value;
     this._clearInput();
+    console.log(12);
     return query;
-  }
-
-  _clearInput() {
-    this._parentEl.querySelector('.search__field').value = '';
   }
 
   addHandlerSearch(handler) {
@@ -17,6 +14,8 @@ class SearchView {
       handler();
     });
   }
+  _clearInput() {
+    this._parentEl.querySelector('.search__field').value = '';
+  }
 }
-
-export default new SearchView();
+export default new searchView();
