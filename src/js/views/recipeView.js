@@ -42,14 +42,17 @@ class RecipeView extends View {
 
   _generateMarkup() {
     return `
-        <figure class="recipe__fig">
-        <img src="${this._data.image}" alt="${
+    
+    <div class="recipe__fig">
+    <span> <img src="${this._data.image}" alt="${
       this._data.title
-    }: class="recipe__img" />
+    }: class="recipe__img" /> </span>
+        
         <h1 class="recipe__title">
           <span>${this._data.title}</span>
         </h1>
-      </figure>
+    </div>
+     
 
       <div class="recipe__details">
         <div class="recipe__info">
@@ -151,5 +154,3 @@ class RecipeView extends View {
   }
 }
 export default new RecipeView();
-// console.log(8);
-// console.log(44);
