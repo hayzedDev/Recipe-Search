@@ -1,6 +1,7 @@
 // const { response } = require('express');
 import('babel-core/register');
 import('babel-polyfill');
+import 'regenerator-runtime/runtime';
 import * as model from './model';
 import { MODAL_CLOSE_SEC } from './config';
 import recipeView from './views/recipeView.js';
@@ -11,7 +12,6 @@ import paginationView from './views/paginationView';
 import bookmarksView from './views/bookmarksView';
 import addRecipeView from './views/addRecipeView.js';
 import 'core-js/stable';
-import 'regenerator-runtime/runtime';
 
 // if (module.hot) {
 //   module.hot.accept();
