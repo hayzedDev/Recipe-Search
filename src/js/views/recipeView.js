@@ -1,6 +1,7 @@
 import View from './View';
 import icons from 'url:../../img/icons.svg';
 import { Fraction } from 'fractional';
+import Jimp from 'jimp';
 
 console.log(Fraction);
 console.log(1);

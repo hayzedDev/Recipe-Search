@@ -57,25 +57,21 @@ class PaginationView extends View {
     console.log(numPages);
     //   Page 1 and there are other pages
     if (curPage === 1 && curPage < numPages) {
-      return (
-        this._generateMarkupButton(curPage + 1, 'next', 'right') +
-        this._generateTotalPages(numPages)
-      );
+      return this._generateMarkupButton(curPage + 1, 'next', 'right');
+      // this._generateTotalPages(numPages)
     }
     // last page
     if (curPage === numPages && numPages > 1) {
       console.log(12);
-      return (
-        this._generateMarkupButton(curPage - 1, 'prev', 'left') +
-        this._generateTotalPages(numPages)
-      );
+      return this._generateMarkupButton(curPage - 1, 'prev', 'left');
+      // this._generateTotalPages(numPages)
     }
     // Some other pages
     if (curPage < numPages) {
       return (
         this._generateMarkupButton(curPage + 1, 'next', 'right') +
-        this._generateMarkupButton(curPage - 1, 'prev', 'left') +
-        this._generateTotalPages(numPages)
+        this._generateMarkupButton(curPage - 1, 'prev', 'left')
+        // this._generateTotalPages(numPages)
       );
     }
     //   Page 1 and there are NO other pages

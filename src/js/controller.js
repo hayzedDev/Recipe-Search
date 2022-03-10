@@ -52,7 +52,6 @@ const controlSearchResults = async function () {
     if (!query) return;
     console.log(4);
 
-    cl;
     // 2. Load search result
     await model.loadSearchResult(query);
     // 3. Render Result
