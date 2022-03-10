@@ -10,13 +10,17 @@
   "author": "Jonas Schedtmann",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.3",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
     "parcel": "^2.0.0-beta.1",
     "sass": "^1.26.10"
   },
   "dependencies": {
     "core-js": "^3.6.5",
     "fractional": "^1.0.0",
-    "jimp": "^0.16.1",
     "regenerator-runtime": "^0.13.7"
   }
 }

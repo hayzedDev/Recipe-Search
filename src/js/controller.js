@@ -1,4 +1,6 @@
 // const { response } = require('express');
+import('babel-core/register');
+import('babel-polyfill');
 import * as model from './model';
 import { MODAL_CLOSE_SEC } from './config';
 import recipeView from './views/recipeView.js';
